@@ -2,9 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SuperHeroes.SuperHeroListPage"
+             xmlns:models="clr-namespace:Models"
              Title="SuperHeroListPage">
 
-    <ListView>
+  
+    <VerticalStackLayout>
+      
+        <ListView x:Name="SuperHeroListView" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="models:SuperHero">
+                <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                               
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"  Source="{Binding HeroPhoto}"  HeightRequest="80" WidthRequest="80"/>
+
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding HeroName}"/>
+                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding AlterEgo}"/>
+                        </Grid>
+                    </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
         
     </ListView>
+    </VerticalStackLayout>
 </ContentPage>
